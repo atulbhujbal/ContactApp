@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<title>jQuery AJAX form</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		
+
+
+
+</head>
+
+<body>
+
+<form action='' method='post' name='ContactForm' id='ContactForm' >
+<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="e" data-role="header">
+        <h3>
+            Add Contact
+        </h3>
+    </div>
+    <div data-role="content">
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#page1" data-transition="fade" data-theme="e" data-icon="home">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#page1" data-transition="fade" data-theme="e" data-icon="search">
+                        Search
+                    </a>
+                </li>
+                <li>
+                    <a href="#page1" data-transition="fade" data-theme="e" data-icon="grid">
+                        Catalogue
+                    </a>
+                </li>
+                <li>
+                    <a href="#page1" data-transition="fade" data-theme="e" data-icon="bars">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div data-role="fieldcontain" class="clsName">
+            <label for="idName">
+                First Name
+            </label>
+            <input name="txtName" id="idName" placeholder="First Name" value="" type="text"
+            data-mini="true">
+        </div>
+        <div data-role="fieldcontain" class="clsLastName">
+            <label for="textinput2">
+                Last Name
+            </label>
+            <input name="txtLastName" id="textinput2" placeholder="Last Name" value=""
+            type="text" data-mini="true">
+        </div>
+        <input name="txtLastName" id="btnSubmit" data-role="button" data-transition="pop" data-theme="e" value="Submit"
+            type="button" data-mini="true">
+                   
+    </div>
+    <div data-theme="e" data-role="footer" data-position="fixed">
+        <h3>
+            Codeeccentric
+        </h3>
+    </div>
+</div>
+</form>
+
+</body>
+<script>
+$("#btnSubmit").click(function(){
+  name = $("#txtName");
+  $.post("http://173.254.28.101/~thecame5/demo/demo_insert.php",{ name: "John", time: "2pm" })
+	.done(function(data) {
+	alert("Data Loaded: " + data);
+});
+});
+</script>
+</html>
