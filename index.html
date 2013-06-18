@@ -28,7 +28,7 @@
         </h3>
     </div>
     <div data-role="content">
-        <div data-role="navbar" data-iconpos="top">
+       <!--<div data-role="navbar" data-iconpos="top">
             <ul>
                 <li>
                     <a href="#page1" data-transition="fade" data-theme="e" data-icon="home">
@@ -51,41 +51,68 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>-->
         <div data-role="fieldcontain" class="clsName">
             <label for="idName">
                 First Name
             </label>
-            <input name="txtName" id="idName" placeholder="First Name" value="" type="text"
-            data-mini="true">
+            <input name="txtName" id="idName" placeholder="First Name" value="" type="text" data-mini="true">
         </div>
         <div data-role="fieldcontain" class="clsLastName">
             <label for="textinput2">
                 Last Name
             </label>
-            <input name="txtLastName" id="textinput2" placeholder="Last Name" value=""
-            type="text" data-mini="true">
+            <input name="txtLastName" id="textinput2" placeholder="Last Name" value="" type="text" data-mini="true">
         </div>
-        <input name="txtLastName" id="btnSubmit" data-role="button" data-transition="pop" data-theme="e" value="Submit"
+        <input id="btnSubmit" data-role="button" data-transition="pop" data-theme="e" value="Login"
             type="button" data-mini="true">
-                   
-    </div>
+			
+		<input id="btnSignUp" data-role="button" data-transition="pop" data-theme="e" value="SignUp"
+            type="button" data-mini="true">
+         
+		 <div data-role="content2">
+            <a data-role="button" id="slide-me">Slideup</a>
+        </div>         
+  </div>
     <div data-theme="e" data-role="footer" data-position="fixed">
         <h3>
             Codeeccentric
         </h3>
     </div>
-</div>
+	</div>
+
 </form>
 
 </body>
 <script>
-$("#btnSubmit").click(function(){
-  name = $("#txtName");
-  $.post("http://173.254.28.101/~thecame5/demo/demo_insert.php",{ name: "John", time: "2pm" })
-	.done(function(data) {
-	alert("Data Loaded: " + data);
-});
+/*
+$(document).on('pagebeforeshow', '#page1', function(){       
+            $(document).on('click', '#btnSubmit', function(){       
+                $.mobile.changePage( "second.html", { transition: "slideup" });
+            });
+        });
+	*/	
+$(document).on('pagebeforeshow', '#page1', function(){       
+
+     $(document).on('click', '#btnSubmit', function(){ 
+
+		fname = $("#idName").val();
+		lname = $("#textinput2").val();
+		
+		$.post("http://173.254.28.101/~thecame5/demo/demo_insert.php",{ fname: fname, lname :lname })
+			.done(function(data) {
+			//alert(data);
+				if( data == "success")
+				{
+						$.mobile.changePage( "second.html", { transition: "pop" });
+				}
+				else
+				{
+					$.mobile.changePage( "second.html", { transition: "pop" });
+					//alert("Login failed!!");
+				}
+			});
+	});
 });
 </script>
 </html>
